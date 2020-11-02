@@ -14,7 +14,7 @@ def init_logging():
 
 def get_args():
     parser = argparse.ArgumentParser(description='Stream an audio source over HTTP as mp3')
-    parser.add_argument('-d', '--device', help='ALSA/Pulse device ID/name', required=True, dest='device')
+    parser.add_argument('-i', '--device', help='ALSA/Pulse device ID/name', required=True, dest='device')
     parser.add_argument('-s', '--sound-system', help='Sound system. Supported: alsa, pulse. Default: alsa', required=False, default='alsa', dest='audio_system')
     parser.add_argument('-v', '--verbose', help='Verbose/debug mode', required=False, action='store_true', dest='debug')
     parser.add_argument('-a', '--address', help='Bind address (default: 0.0.0.0)', required=False, default='0.0.0.0', dest='address')
