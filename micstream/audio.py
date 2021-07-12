@@ -28,6 +28,18 @@ class AudioSource:
             '-b:a', str(bitrate) + 'k', '-ac', str(channels), '-ar', str(sample_rate),
             '-f', 'mp3', '-')
 
+# For those of you who have a mono (1 channel) mic, the '-ac' flag should be entered strictly
+# before the '-i device'; if that flag is set after the device declaration, then the setting
+# will apply for the output (as per the man page for ffmepg command). Hope this helps.
+# Ultimatelly, it will look like this:
+#
+#         self.ffmpeg_args = (
+#            ffmpeg_bin, '-f', audio_system, '-ac', '1', '-i', device, '-vn', '-acodec', 'libmp3lame',
+#            '-b:a', str(bitrate) + 'k', '-ac', str(channels), '-ar', str(sample_rate),
+#            '-f', 'mp3', '-')
+#
+
+
         self._ffmpeg_start_time = None
         self._first_sample_time = None
         self.latency = 0.
